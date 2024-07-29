@@ -1,0 +1,40 @@
+# .NET Core
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+.history/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Distribution folder
+dist/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+ReSharperSettings.json
+
+# Rider
+.idea/
+.idea/*
+.idea_modules/
+
+# Docker
+**/Dockerfile
+**/docker-compose.yml
