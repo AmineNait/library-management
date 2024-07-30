@@ -2,8 +2,6 @@ using LibraryManagement.Api.Models;
 using LibraryManagement.Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Api.Controllers
 {

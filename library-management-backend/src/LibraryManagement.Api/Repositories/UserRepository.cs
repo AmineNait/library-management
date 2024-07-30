@@ -1,8 +1,6 @@
 using LibraryManagement.Api.Models;
 using LibraryManagement.Api.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Api.Repositories
 {
