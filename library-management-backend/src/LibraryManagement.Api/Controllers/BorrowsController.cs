@@ -7,7 +7,6 @@ namespace LibraryManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class BorrowsController : ControllerBase
     {
         private readonly BorrowService _borrowService;

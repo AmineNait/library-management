@@ -7,7 +7,6 @@ namespace LibraryManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class AuthorsController : ControllerBase
     {
         private readonly AuthorService _authorService;

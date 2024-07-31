@@ -15,7 +15,21 @@ namespace LibraryManagement.Api.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Configurer les relations entre les entités ici
+
+            modelBuilder.Entity<Book>()
+                .HasOne(b => b.Author)
+                .WithMany(a => a.Books)
+                .HasForeignKey(b => b.AuthorId);
+
+            modelBuilder.Entity<Borrow>()
+                .HasOne(b => b.Book)
+                .WithMany(bk => bk.Borrows)
+                .HasForeignKey(b => b.BookId);
+
+            modelBuilder.Entity<Borrow>()
+                .HasOne(b => b.User)
+                .WithMany(u => u.Borrows)
+                .HasForeignKey(b => b.UserId);
         }
     }
 }

@@ -1,13 +1,11 @@
 using LibraryManagement.Api.Models;
 using LibraryManagement.Api.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class BooksController : ControllerBase
     {
         private readonly BookService _bookService;
@@ -36,19 +34,33 @@ namespace LibraryManagement.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Book>> AddBook(Book book)
+        public async Task<ActionResult<Book>> AddBook([FromBody] BookDto bookDto)
         {
+            var book = new Book
+            {
+                Title = bookDto.Title,
+                AuthorId = bookDto.AuthorId
+            };
+
             await _bookService.AddBookAsync(book);
             return CreatedAtAction(nameof(GetBook), new { id = book.Id }, book);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBook(int id, Book book)
+        public async Task<IActionResult> UpdateBook(int id, [FromBody] BookDto bookDto)
         {
-            if (id != book.Id)
+            if (id != bookDto.Id)
             {
                 return BadRequest();
             }
+
+            var book = new Book
+            {
+                Id = bookDto.Id,
+                Title = bookDto.Title,
+                AuthorId = bookDto.AuthorId
+            };
+
             await _bookService.UpdateBookAsync(book);
             return NoContent();
         }
@@ -60,4 +72,12 @@ namespace LibraryManagement.Api.Controllers
             return NoContent();
         }
     }
+
+    public class BookDto
+    {
+        public int Id { get; set; }
+        public required string Title { get; set; }
+        public int AuthorId { get; set; }
+    }
+
 }
